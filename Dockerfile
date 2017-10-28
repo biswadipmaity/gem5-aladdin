@@ -9,6 +9,7 @@ RUN apt-get clean
 # Add dependencies for aladdin
 
 #Boost Graph Library
+RUN apt-get update
 RUN apt-get install -y libbz2-dev libboost-dev libboost-regex-dev libboost-graph-dev
 RUN apt-get clean
 ENV BOOST_ROOT="/usr/include/boost"
@@ -37,7 +38,7 @@ RUN make install
 WORKDIR /usr/local/src/
 RUN git clone https://github.com/harvard-acc/gem5-aladdin
 WORKDIR /usr/local/src/gem5-aladdin
-ENV ALADDIN_HOME="/usr/local/src/gem5-aladdin"
+ENV ALADDIN_HOME="/usr/local/src/gem5-aladdin/src/aladdin"
 RUN git submodule update --init --recursive
 
 # build it
